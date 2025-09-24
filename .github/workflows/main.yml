@@ -1,9 +1,9 @@
-name: dispatch_action
+name: dispatch-workflow
 
 on:
  push:
    branches:
-     - master
+     - main
 
 jobs:
  dispatch:
@@ -13,5 +13,5 @@ jobs:
        uses: peter-evans/repository-dispatch@v1
        with:
          token: ${{ secrets.GH_PAT }}
-         repository: Imperor0103/programmers-badge
+         repository: {자기 깃허브 이름}/Programmers_Badge_Generator
          event-type: trigger-workflow
