@@ -31,7 +31,6 @@ void DFS(string current, string remain)
 	}
 }
 
-
 int solution(string numbers) 
 {
 	candidates.clear();
@@ -43,5 +42,4 @@ int solution(string numbers)
 		if (IsPrime(num)) answer++;
 	}
 	return answer;
-
 }
