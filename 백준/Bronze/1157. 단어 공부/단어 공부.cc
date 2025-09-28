@@ -9,11 +9,10 @@ void Solution(string str)
 {
 	for (int i = 0; i < str.length(); i++)
 	{
-		// 해당 숫자의 알파벳을 소문자로 바꾸고, ascii 비교
-		// a는 97
-		str[i] = tolower(static_cast<unsigned char>(str[i]));
+		// 해당 숫자의 알파벳을 대문자로 바꾼다	
+		str[i] = toupper(static_cast<unsigned char>(str[i]));
 
-		countAlphabet[str[i] - 'a']++;
+		countAlphabet[str[i] - 'A']++;
 	}
 
 	int max = -1;
@@ -50,3 +49,4 @@ int main()
 	Solution(str);
 	return 0;
 }
+
