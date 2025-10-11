@@ -1,29 +1,36 @@
 #include <iostream>
+#include <queue>
+#include <algorithm>
 
 using namespace std;
 
-int Solution(long long A, long long B)
+int BFS(long long A, long long B)
 {
-	if (A == B) return 1;      
-	int count = 0;
-	while (B > A) 
+	queue<pair<long long, int>> q;
+	q.push({ A, 1 });  
+
+	while (!q.empty())
 	{
-		if (B % 10 == 1) 
+		pair<long long, int> cur = q.front();
+		q.pop();
+
+		long long val = cur.first;
+		int cnt = cur.second;
+
+		if (val == B)
 		{
-			B /= 10;
-			count++;
+			return cnt;
 		}
-		else if (B % 2 == 0) 
-		{
-			B /= 2;
-			count++;
-		}
-		else 
-		{
-			return -1;
-		}
+
+		long long next1 = val * 2;
+		long long next2 = val * 10 + 1;
+
+		if (next1 <= B)
+			q.push({ next1, cnt + 1 });
+		if (next2 <= B)
+			q.push({ next2, cnt + 1 });
 	}
-	return (B == A) ? count + 1 : -1;
+	return -1;
 }
 
 int main()
@@ -34,7 +41,7 @@ int main()
 	long long A, B;
 	cin >> A >> B;
 
-	cout << Solution(A, B) << '\n';
-
+	int result = BFS(A, B);
+	cout << result << '\n';
 	return 0;
 }
